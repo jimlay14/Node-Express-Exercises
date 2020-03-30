@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const axios = require('axios');
 const port = process.env.Port || 8080;
 
 app.use(express.json());
@@ -62,4 +63,19 @@ app.get('/asyncTest', (req, res) => {
 
   userLookup();
   getUserPermissions();
+});
+
+/*
+
+  Activity 4
+
+  Suppose you have a URL that will be different between your TEST and PRODUCTION environments.
+  How would you create an environment variable in node.js so that the url would not need to be hard coded?
+
+*/
+
+app.get('envVar', (req, res) => {
+  //set your env var here
+  const myVar = ``;
+  console.log(`my environment variable is ${myVar}`);
 });

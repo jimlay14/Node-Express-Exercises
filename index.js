@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const axios = require('axios');
 const port = process.env.Port || 8080;
 
 app.use(express.json());

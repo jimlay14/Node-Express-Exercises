@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title> Node Express App - Jacob Imlay</title>
+    </head>
+    <body>
+    <div>
+        <form id="newActivity" action ="/activity" method="POST">
+            <input id="nameField" type="text" name="newTitle" placeholder="Add new activity">
+            <input id="statusField" type="checkbox" name="newStatus" value="complete">
+            <label for="statusField">Completed</label>
+
+            </select>
+            <button> Add Task </button>
+        </form>
+    </div>
+    <div>
+        <h2>Tasks</h2>
+        <% for( var i = 0; i < toDoList.length; i++){ %>
+        <li>
+        <input type="checkbox" name="check" <% if (toDoList[i].status === 'complete') { %>checked<% } %>  /> <%= toDoList[i].item %> 
+        </li>
+        <% } %>
+    </div>
+    </body>
+</html>

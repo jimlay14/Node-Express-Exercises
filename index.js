@@ -1,7 +1,20 @@
 const express = require('express');
 const app = express();
 const port = process.env.Port || 8080;
+const COMPLETE = 'complete';
+const INCOMPLETE = 'incomplete';
 
+
+var bodyParser = require('body-parser');
+var toDoList = require('./todo.json').myToDoList,
+    idIterator = toDoList.length+1; //unique identifier
+
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//Using EJS for simplifying templating and enabling UI interaction for routes
+app.set('view engine', 'ejs');
 app.use(express.json());
 
 app.listen(port, () => {
@@ -15,11 +28,22 @@ app.listen(port, () => {
 
 */
 
+app.get('/', (req, res) => res.render('index', {toDoList: toDoList}));
+
 //Create a route that will retrieve an activity by its ID and display the information of it (name, status, etc)
 app.get('/activity/:id', (req, res) => {});
 
 //Create a route that will insert a new activity
-app.post('/activity', (req, res) => {});
+app.post('/activity', (req, res) => {
+    var newTask = {
+        id: idIterator,
+        item: req.body.newTitle,
+        status: req.body.newStatus === COMPLETE ? COMPLETE : INCOMPLETE
+    };
+    idIterator++; //increment simple id generator
+    toDoList.push(newTask); //add to list
+    res.redirect("/"); //return to index
+});
 
 //Create a route that will edit an existing activity
 app.put('/activity/:id', (req, res) => {});

@@ -4,14 +4,16 @@
     </head>
     <body>
     <div>
+        <h2>Add a Task:</h2>
         <form id="newActivity" action ="/activity" method="POST">
-            <input id="nameField" type="text" name="newTitle" placeholder="Add new activity">
-            <input id="statusField" type="checkbox" name="newStatus" value="complete">
-            <label for="statusField">Completed</label>
+            <input id="nameField" type="text" name="newTitle" placeholder="Add new activity"><br/>
+            <label for="statusField">Completed?</label>
+            <input id="statusField" type="checkbox" name="newStatus" value="complete"><br/><br/>
 
             </select>
             <button> Add Task </button>
         </form>
+        <hr/>
     </div>
     <div>
         <h2>Tasks</h2>
@@ -20,6 +22,7 @@
         <input type="checkbox" name="check" <% if (toDoList[i].status === 'complete') { %>checked<% } %>  /> <%= toDoList[i].item %> 
         </li>
         <% } %>
+        <hr/>
     </div>
     </body>
 </html>

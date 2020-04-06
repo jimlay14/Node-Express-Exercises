@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title> Node Express App - Jacob Imlay</title>
+    </head>
+    <body>
+    <div>
+        <h2>Images for dog breed <%= breed %></h2>
+        <% for( var i = 0; i < breedImages.length; i++){ %>
+        <li>
+        <a href="<%= breedImages[i].url%>" target="_blank"> <%= breedImages[i].text %> </a>
+        </li>
+        <% } %>
+        <hr/>
+    </div>
+    </body>
+</html>
